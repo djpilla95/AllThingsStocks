@@ -15,6 +15,7 @@
     {
         public string Symbol { get; set; }
         public double RegularMarketPrice { get; set; }
+        public long MarketCap { get; set; }
     }
 }
 

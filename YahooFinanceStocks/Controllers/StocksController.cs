@@ -15,7 +15,7 @@ namespace YahooFinanceStocks.Controllers
             _stocksProcessor = stocksProcessor;
         }
 
-        [HttpGet("GetStockListings")]
+        [HttpGet("GetStockListingsAsync")]
         public async Task<IActionResult> GetStockListingsAsync([FromQuery] string stockSymbols)
         {
             if(stockSymbols == null || stockSymbols.Length == 0)
@@ -25,13 +25,10 @@ namespace YahooFinanceStocks.Controllers
 
             try
             {
-                var stocks = await _stocksProcessor.GetStockListingsAsync(stockSymbols);
-                if (stocks != null && stocks.Count > 0)
+                var result = await _stocksProcessor.GetStockListingsAsync(stockSymbols);
+                if (result.Stocks != null && result.Stocks.Count > 0)
                 {
-                    return Ok(new StockListingResponse
-                    {
-                        Stocks = stocks
-                    });
+                    return Ok(result);
                 }
             }
             catch(Exception ex)

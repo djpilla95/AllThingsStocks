@@ -2,7 +2,7 @@
 
 namespace YahooFinanceStocks.Shared.Communication
 {
-    public class StockListingResponse
+    public class StockListingResponse : BaseResponse
     {
         public List<StockListing> Stocks { get; set; }
     }

@@ -1,9 +1,9 @@
-﻿using YahooFinanceStocks.Shared.Models;
+﻿using YahooFinanceStocks.Shared.Communication;
 
 namespace YahooFinanceStocks.Shared.Interfaces
 {
     public interface IStocksDataAccess
     {
-        Task<List<StockListing>> GetStockListingsAsync(string stockSymbols);
+        Task<StockListingResponse> GetStockListingsAsync(string stockSymbols);
     }
 }

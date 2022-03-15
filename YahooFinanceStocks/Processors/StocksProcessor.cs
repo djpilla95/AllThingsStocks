@@ -1,5 +1,5 @@
-﻿using YahooFinanceStocks.Shared.Interfaces;
-using YahooFinanceStocks.Shared.Models;
+﻿using YahooFinanceStocks.Shared.Communication;
+using YahooFinanceStocks.Shared.Interfaces;
 
 namespace YahooFinanceStocks.Processors
 {
@@ -12,7 +12,7 @@ namespace YahooFinanceStocks.Processors
             _stocksDataAccess = stocksDataAccess;
         }
 
-        public async Task<List<StockListing>> GetStockListingsAsync(string stockSymbols)
+        public async Task<StockListingResponse> GetStockListingsAsync(string stockSymbols)
         {
             return await _stocksDataAccess.GetStockListingsAsync(stockSymbols);
         }
