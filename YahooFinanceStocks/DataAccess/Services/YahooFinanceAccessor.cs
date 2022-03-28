@@ -26,7 +26,8 @@ namespace YahooFinanceStocks.DataAccess.Services
             };
 
 
-            if (result != null && result.IsSuccessStatusCode) {
+            if (result != null && result.IsSuccessStatusCode)
+            {
                 var stockListings = await result.Content.ReadFromJsonAsync<YahooFinanceDto>();
                 if(stockListings != null && stockListings.QuoteResponse != null && stockListings.QuoteResponse.Error == null)
                 {
@@ -42,9 +43,14 @@ namespace YahooFinanceStocks.DataAccess.Services
                 }
                 else
                 {
-                    response.Message = "Failed to retrieve stocks from Yahoo!";
+                    response.Message = "No stocks were found for the entered ticker symbol(s).";
                     return response;
                 }
+            }
+            else
+            {
+                response.Message = "The result from Yahoo Finance was null or failed.";
+                return response;
             }
 
             response.Success = true;
