@@ -2,6 +2,7 @@
 using YahooFinanceStocks.Shared.Communication;
 using YahooFinanceStocks.Shared.Interfaces;
 
+// Yahoo Finance Stocks Controller
 namespace YahooFinanceStocks.Controllers
 {
     [Route("[controller]")]
